@@ -1,0 +1,14 @@
+{% assign show_up_at = "" %}
+
+{% for checkin in guest.checkins %}
+	{% if checkin.accesspoint.traits.type == "entree" %}
+		{% assign accesspoint_date = checkin.accesspoint.traits.doc_title %}
+		{% if show_up_at == blank %}
+			{% assign show_up_at = accesspoint_date %}
+		{% else %}
+			{% assign show_up_at = show_up_at | append: ", " | append: accesspoint_date %}
+		{% endif %}
+	{% endif %}
+{% endfor %}
+
+{{ show_up_at }}
