@@ -1,0 +1,7 @@
+<script type="text/javascript">
+  // Wait for the page to be fully load
+  document.addEventListener("DOMContentLoaded", function() {
+  	// Use jQuery to get the class and change the text
+  	$(".meeting-modal-button span").text("CE TEXTE EST MODIFIE PAR UN SNIPPET");
+  });
+</script>
