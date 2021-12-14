@@ -1,0 +1,5 @@
+<style>
+  #page_caption .speaker_thumbnail .image-container {
+    border-radius: 0px!important;
+}
+</style>
