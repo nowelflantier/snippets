@@ -1,0 +1,5 @@
+<style>
+ body table, body table th, body table td {
+    border-radius: 20px!important;
+}
+</style>
