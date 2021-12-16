@@ -1,0 +1,14 @@
+<style>
+
+  #footer ul li a {
+     width: 40px!important;
+  height: 40px!important;
+  }
+  
+  #footer ul li a i {
+  position: relative!important;
+  top: 7px!important;
+  font-size: 19px!important;
+  }
+  
+</style>
