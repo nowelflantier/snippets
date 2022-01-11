@@ -1,0 +1,9 @@
+<div class='container {{ settings.spacing }}' data-section-id='{{ section.id }}' data-section-type='codeit'>
+ <style>
+
+.btn.btn-success {
+	display: none!important;
+}
+   
+</style>
+</div>
