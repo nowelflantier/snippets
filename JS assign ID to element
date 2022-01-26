@@ -1,0 +1,3 @@
+<script type="text/javascript">
+  document.getElementsByTagName('body')[0].setAttribute('id', 'homepage');
+</script>
