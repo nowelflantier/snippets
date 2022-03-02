@@ -1,0 +1,140 @@
+<div class='container {{ settings.spacing }}' data-section-id='{{ section.id }}' data-section-type='codeit'>
+  <h1>{{ now }} - {{ "now" | date: "%Y-%m-%d %H:%M" }}</h1>
+  <h2>ÉTAPE À NE PAS MANQUER</h2>
+  <table>
+    <tr>
+      <td><h3>▶️ Informations société</h3></td>
+      <td>⚠️ Dès la signature du partenariat</td>
+      <td>
+        
+      {% assign now_value = "now" | date: "%Y-%m-%d %H:%M:%S" %}
+                              
+      {% if guest.guest_metadata.bat == "true" %}✅
+      {% elsif now_value < "2022-10-28 12:00:00" %}❌
+      {% else %}⚠️ Dès la signature du partenariat
+      {% endif %}
+                             
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/registration/{{guest.guest_category_id}}?guest_id={{guest.id}}&register=true&secret={{guest.secret}}&step_number=1" class="button btn btn-primary " style=" ">Compléter</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Informations interventions et intervenants</h3></td>
+      <td>⚠️ 10 juin 2022</td>
+      <td>
+      {% if guest.guest_metadata.bat != true %}⚠️ Deadline dépassée
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/espace-partenaire-interventions" class="button btn btn-primary " style=" ">Compléter</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Ouverture de la plateforme de networking</h3></td>
+      <td>⚠️ J-7 événement</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/espace-partenaire-networking" class="button btn btn-primary " style=" ">Plus d'informations</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Réception des badges par e-mail</h3></td>
+      <td>⚠️ J-7 événement</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌ 
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/espace-partenaire-badges" class="button btn btn-primary " style=" ">Plus d'informations</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Inscription collaborateurs</h3></td>
+      <td>⚠️ 27 septembre</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}r Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/registration/{{guest.guest_category_id}}?guest_id={{guest.id}}&register=true&secret={{guest.secret}}&step_number=2" class="button btn btn-primary " style=" ">Compléter</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Téléchargement des badges collaborateurs</h3></td>
+      <td>⚠️ 28 octobre</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>   
+    </tr>
+    <tr>
+      <td><h3>▶️ Téléchargement des badges intervenants</h3></td>
+      <td>⚠️ 28 octobre 2022</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌ 
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      
+    </tr>
+       </tr>
+    <tr>
+      <td><h3>▶️ Livraison des éléments au Palais Brongniart</h3></td>
+      <td>⚠️ 3 octobre 2022</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/espace-partenaire-livraison" class="button btn btn-primary " style=" ">Plus d'informations</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Montage de votre stand au Palais Brongniart</h3></td>
+      <td>⚠️ 3 octobre 2022</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌ 
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/espace-partenaire-livraison" class="button btn btn-primary " style=" ">Plus d'informations</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Démontage et enlèvement de votre stand</h3></td>
+      <td>⚠️ 4 octobre 2022</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="https://amtechday2022.eventmaker.io/espace-partenaire-livraison" class="button btn btn-primary " style=" ">Plus d'informations</a></td>
+    </tr>
+    <tr>
+      <td><h3>▶️ Réception questionnaire de satisfaction</h3></td>
+      <td>⚠️ J+7</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌ 
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="" class="button btn btn-primary " style=" ">A venir</a></td>
+    </tr>
+      <tr>
+      <td><h3>▶️ Réception fichier des participants (fichier RGPD), photos et vidéos</h3></td>
+      <td>⚠️ J+7</td>
+      <td>
+      {% if guest.metadata.BAT != true %}❌ 
+      {% elsif now &lt;< 2020-07-30 12:00:00 +0200 %}❌
+                               {% else %}⚠️ Deadline dépassée
+                               {% endif %}
+      </td>
+      <td><a href="" class="button btn btn-primary " style=" ">A venir</a></td>
+  </table>
