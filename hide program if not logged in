@@ -1,0 +1,19 @@
+<script>
+  console.log("coucou");
+	document.addEventListener("DOMContentLoaded", function() {
+    const $ssoButton = $('[data-section-id="feature-columns-850535"]');
+	  const $title_programme = $('[data-section-id="title-947013"]');
+	  const $programme = $('[data-section-id="sessions-list-421611"]');
+
+    if ({{ guest.signed_in_with_sso? }} === true) {
+  		$ssoButton.hide();
+	  	$title_programme.show();
+		  $programme.show();
+  		return;
+    } else {
+		  $ssoButton.show();
+	  	$title_programme.hide();
+		  $programme.hide();
+  	}
+ });
+</script>
