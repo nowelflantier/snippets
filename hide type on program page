@@ -7,3 +7,23 @@ div.label-and-thematics {
    
 </style>
 </div>
+ 
+ 
+ OR 
+ 
+ 
+ <div class='container {{ settings.spacing }}' data-section-id='{{ section.id }}' data-section-type='codeit'>
+ <style>
+
+span.label.label-default {
+	display: none!important;
+}
+span.label.label-default.thematic {
+	display: unset!important;
+}
+
+div.filter-container {
+   display: none!important;
+   }
+</style>
+</div>
