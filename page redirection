@@ -1,0 +1,5 @@
+<div class='container {{ settings.spacing }}' data-section-id='{{ section.id }}' data-section-type='codeit'>
+    <script>
+        window.location.href = "https://www.universites-economie-demain.fr/manifeste";
+    </script>
+</div>
