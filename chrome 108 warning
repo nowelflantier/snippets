@@ -1,0 +1,16 @@
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+	function ChromeVersion () {     
+    	var raw = navigator.userAgent.match(/Chrom(e|ium)\/([0-9]+)\./);
+  	  return raw ? parseInt(raw[2], 10) : false;
+	}
+	const alert = document.querySelector("#chrome-version");
+	var CV = ChromeVersion();
+	if ( CV == 108 && window.location !== window.parent.location ) {
+		alert.classList.remove("hidden");
+	}
+});
+</script>
+<div class='container {{ settings.spacing }}' data-section-id='{{ section.id }}' data-section-type='codeit'>
+  <div id ="chrome-version" class="alert alert-danger hidden mt-10"> <i class="fa fa-warning"></i> Cette version du navigateur Chrome contient des bugs pouvant créer des problèmes lors de l'inscription nous vous invitons à utiliser ce <a style="text-decoration:underline" href="https://website-85651.eventmaker.io/registration/632dcf2188dbe5027f16c2d1" target="_blank">lien d'inscription</a></div>
+</div>
