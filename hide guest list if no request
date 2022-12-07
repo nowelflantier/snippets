@@ -1,0 +1,3 @@
+{% if url_params.guests_list_88439_q == "" or url_params.guests_list_88439_q.size  < 7  %}<style> .up-s {display:none!important;}
+</style><h2 style="text-align:center; margin:5em; padding:5em;">Tapez votre nom pour accéder à votre badge</h2>{% else %}{% endif %}
+
