@@ -1,0 +1,38 @@
+<!-- Formulaire fake home -->
+<div data-section-type="registration-form">
+  <div class="container {{ settings.spacing }}">
+    <div class="row">
+      <div class="col-sm-12">
+        <div style="max-width: 1200px" class="center-block">
+          <form class="registration-form center-block" method="post">
+            <div class="ticket-container">
+              <div class="form-group has-feedback">
+                <label class="control-label">Code identifiant</label>
+                <input type="text" name="order_uid" class="form-control .order_uid">
+              </div>
+              <br>
+              <div class="form-actions text-right">
+                <input type="submit" value="Suivant" class="btn btn-primary">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    $('form').on('submit', function(e) {
+      e.preventDefault();
+      var orderUID = $("[name=order_uid]").val();
+      {% assign params_url = "" %}
+      {% for url_param in url_params %}
+        {% assign params_url = params_url | append: "&" | append: url_param[0] | append: "=" | append: url_param[1] %}
+      {% endfor %}
+      // Redirection vers Edit with order uid
+      window.location.href = "https://app.eventmaker.io/public/events/{{event.id}}/guests/edit_from_order_uid?register=true{{ params_url }}&order_uid=" + orderUID;
+    });
+  });
+</script>
