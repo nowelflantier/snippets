@@ -1,0 +1,91 @@
+<style>
+  .row:before {
+  display: block!important;
+  }
+  #linked-person {
+  margin-bottom: 0px!important;
+  }
+</style>
+
+{% capture adult_tickets %}    
+      {% foreach_linked_guest guest_category_id: "645e4ce23b192b0084a174a2" %}
+  	
+          <div class="col-lg-2 col-md-3 col-xs-6 guest-item">
+    <a class="thumbnail card-shadow card-border-radius">
+      <div class="image-container">
+        <img class="entered loaded" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+      </div>
+{% if linked_guest.cc_showed_up == "true" %}
+<div class="caption error" style="background-color:red!important;">
+        {% else %}
+ <div class="caption">
+        {% endif %}
+        <h3><strong>{{ linked_guest.identity }}</strong></h3>
+      </div>
+    </a>
+      <br>
+  </div>
+      {% endforeach_linked_guest %}
+    {% endcapture %}
+            
+{% capture children_tickets %}    
+      {% foreach_linked_guest guest_category_id: "645e4ce23b192b0084a174a4" %}
+          <div class="col-lg-2 col-md-3 col-xs-6 guest-item">
+    <a class="thumbnail card-shadow card-border-radius">
+      <div class="image-container">
+        <img class="entered loaded" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+      </div>
+      {% if linked_guest.cc_showed_up == "true" %}
+<div class="caption error" style="background-color:red!important;">
+        {% else %}
+ <div class="caption">
+        {% endif %}
+        <h3><strong>{{ linked_guest.identity }}</strong></h3>
+      </div>
+    </a>
+      <br>
+  </div>
+      {% endforeach_linked_guest %}
+    {% endcapture %}
+            
+{% capture invitation_tickets %}    
+      {% foreach_linked_guest guest_category_id: "645e4ce23b192b0084a174a5" %}
+  	
+          <div class="col-lg-2 col-md-3 col-xs-6 guest-item">
+    <a class="thumbnail card-shadow card-border-radius">
+      <div class="image-container">
+        <img class="entered loaded" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+      </div>
+     {% if linked_guest.cc_showed_up == "true" %}
+<div class="caption error" style="background-color:red!important;">
+        {% else %}
+ <div class="caption">
+        {% endif %}
+        <h3><strong>{{ linked_guest.identity }}</strong></h3>
+      </div>
+    </a>
+      <br>
+  </div>
+      {% endforeach_linked_guest %}
+    {% endcapture %}
+            
+<div class="container text-center">
+  <div class="row">
+    <div class="{{ settings.spacing }}" data-section-id="{{ section.id }}" data-section-type="codeit">
+      <h2 style="margin-top: 20px;">Vos billets adultes</h2>
+      <div class="row">
+        {{adult_tickets}}
+      </div>
+      <h2 style="margin-top: 20px;">Vos billets enfants</h2>
+      <div class="row">
+        {{children_tickets}}
+      </div>
+
+      <h2 style="margin-top: 20px;">Vos invitations</h2>
+      <div class="row">
+        {{invitation_tickets}}
+      </div>
+    </div>
+  </div>
+</div>
+
