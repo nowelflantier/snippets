@@ -35,6 +35,8 @@
   border-radius: 6px;
   overflow: hidden;
   width:50vw;
+  box-shadow: 0.1vw 0.1vw 5px rgba(0, 0, 0, 0.285);;
+  border: 1px solid black;
   position: relative;
   background-color:white;
 }
@@ -75,6 +77,7 @@
   align-items: center;
   flex: 0 0 auto;
   width: 100%;
+    box-shadow: 30px 30px black;
   scroll-snap-align: center;
   padding: 20px;
   margin-right: 20px;
