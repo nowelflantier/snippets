@@ -1,0 +1,243 @@
+<style>
+.row:before {
+  display: block!important;
+}
+
+#linked-person-* {
+  margin-bottom: 0px!important;
+  border-left: none!important;
+  padding-left: 0!important;
+}
+
+.prevBtn, .nextBtn {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  width: 10vw;
+}
+
+.test-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 100vw;
+  scroll-snap-align: center;
+  padding: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+.test-card {
+  border-radius: 6px;
+  overflow: hidden;
+  width:50vw;
+  position: relative;
+  background-color:white;
+}
+
+.test-img {
+  height: auto;
+  overflow:hidden;
+  position: relative;
+}
+
+.test-caption {
+  padding:8px;
+  background-color:#3f51b5;
+}
+
+.carousel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cardContainer {
+  display: flex;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 0 20px; 
+  box-sizing: border-box;
+  margin: 0 20px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 100%;
+  scroll-snap-align: center;
+  padding: 20px;
+  margin-right: 20px;
+  box-sizing: border-box;
+  text-align: center;
+  background-color: #f0f0f0;
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+h3 {
+  color:white!important;
+}
+  .btn {
+  margin-bottom: 10px!important;
+    margin-top: 10px!important;
+  }
+</style>
+
+
+{% capture adult_tickets %}    
+      {% foreach_linked_guest guest_category_id: "645e4ce23b192b0084a174a2" %}
+
+          <div class="test-container">
+            <div class="test-card">
+      <div class="image-container">
+        {% if linked_guest.cc_showed_up == "true" %}
+        <img class="test-img" style="filter:blur(3px);" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+                  {% else %}
+              <img class="test-img" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+                {% endif %}
+      </div>
+{% if linked_guest.cc_showed_up == "true" %}
+<div class="test-caption" style="background-color:red!important;">
+    <p style="color:white">Passé le : {{linked_guest.updated_at | date: "%d-%m-%Y %H:%M" }}</p>
+        {% else %}
+ <div class="test-caption">
+   <a href="{{linked_guest.badge_url}}" target="_blank"><button class="btn">Télécharger le badge</button></a>
+
+        {% endif %}
+        <h3><strong>{{ linked_guest.identity }}</strong></h3>
+  <p style="color:white">Inscrit le : {{linked_guest.registered_at | date: "%d-%m-%Y %H:%M" }}</p>
+      </div>
+       </div>
+  </div>
+      {% endforeach_linked_guest %}
+    {% endcapture %}
+            
+{% capture children_tickets %}    
+      {% foreach_linked_guest guest_category_id: "645e4ce23b192b0084a174a4" %}
+         <div class="test-container">
+            <div class="test-card">
+      <div class="image-container">
+        {% if linked_guest.cc_showed_up == "true" %}
+        <img class="test-img" style="filter:blur(3px);" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+                  {% else %}
+              <img class="test-img" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+                {% endif %}
+      </div>
+{% if linked_guest.cc_showed_up == "true" %}
+<div class="test-caption" style="background-color:red!important;">
+   <p style="color:white">Passé le : {{linked_guest.updated_at | date: "%d-%m-%Y %H:%M" }}</p>
+        {% else %}
+ <div class="test-caption">
+    <a href="{{linked_guest.badge_url}}" target="_blank"><button class="btn">Télécharger le badge</button></a>
+        {% endif %}
+        <h3><strong>{{ linked_guest.identity }}</strong></h3>
+      <p style="color:white">Inscrit le : {{linked_guest.registered_at | date: "%d-%m-%Y %H:%M" }}</p>
+      </div>
+       </div>
+  </div>
+      {% endforeach_linked_guest %}
+    {% endcapture %}
+            
+{% capture invitation_tickets %}    
+      {% foreach_linked_guest guest_category_id: "645e4ce23b192b0084a174a5" %}
+  	
+  <div class="test-container">
+            <div class="test-card">
+      <div class="image-container">
+        {% if linked_guest.cc_showed_up == "true" %}
+        <img class="test-img" style="filter:blur(3px);" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+                  {% else %}
+              <img class="test-img" data-ll-status="loaded" src="https://app.eventmaker.io/en/public/events/{{event.id}}/guests/{{linked_guest.id}}/qrcode?secret={{linked_guest.secret}}">
+                {% endif %}
+      </div>
+{% if linked_guest.cc_showed_up == "true" %}
+<div class="test-caption" style="background-color:red!important;">
+   <p style="color:white">Passé le : {{linked_guest.updated_at | date: "%d-%m-%Y %H:%M" }}</p>
+        {% else %}
+ <div class="test-caption">
+    <a href="{{linked_guest.badge_url}}" target="_blank"><button class="btn">Télécharger le badge</button></a>
+        {% endif %}
+        <h3><strong>{{ linked_guest.identity }}</strong></h3>
+    <p style="color:white">Inscrit le : {{linked_guest.registered_at | date: "%d-%m-%Y %H:%M" }}</p>
+      </div>
+       </div>
+  </div>
+      {% endforeach_linked_guest %}
+    {% endcapture %}
+            
+<div class="container text-center" style="width:95%!important;">
+  <div class="row">
+    <div class="{{ settings.spacing }}" data-section-id="{{ section.id }}" data-section-type="codeit">
+      <h2 style="margin-top: 20px;">Vos billets adultes</h2>
+      <div class="carousel">
+        <button class="prevBtn">←</button>
+        <div class="cardContainer">
+          {{adult_tickets}}
+        </div>
+        <button class="nextBtn">→</button>
+      </div>
+
+      <h2 style="margin-top: 20px;">Vos billets enfants</h2>
+      <div class="carousel">
+        <button class="prevBtn">←</button>
+        <div class="cardContainer">
+          {{children_tickets}}
+        </div>
+        <button class="nextBtn">→</button>
+      </div>
+
+      <h2 style="margin-top: 20px;">Vos invitations</h2>
+      <div class="carousel">
+        <button class="prevBtn">←</button>
+        <div class="cardContainer">
+          {{invitation_tickets}}
+        </div>
+        <button class="nextBtn">→</button>
+      </div>
+       </div>
+  </div>
+</div>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', (event) => {
+    let cardContainers = document.querySelectorAll(".cardContainer");
+    let nextBtns = document.querySelectorAll(".nextBtn");
+    let prevBtns = document.querySelectorAll(".prevBtn");
+
+    nextBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            let card = cardContainers[index].querySelector(".test-container");
+            if (card) {
+                let newScrollPosition = cardContainers[index].scrollLeft + card.offsetWidth + (cardContainers[index].offsetWidth - card.offsetWidth) / 2;
+                cardContainers[index].scrollTo({left: newScrollPosition, behavior: 'smooth'});
+            }
+        });
+    });
+
+    prevBtns.forEach((btn, index) => {
+        btn.addEventListener('click', () => {
+            let card = cardContainers[index].querySelector(".test-container");
+            if (card) {
+                let newScrollPosition = cardContainers[index].scrollLeft - card.offsetWidth - (cardContainers[index].offsetWidth - card.offsetWidth) / 2;
+                cardContainers[index].scrollTo({left: newScrollPosition, behavior: 'smooth'});
+            }
+        });
+    });
+});
+</script>
+
