@@ -1,0 +1,199 @@
+<div id="loader-wrapper">
+    <div id="loader"></div>
+</div>
+
+<script type="text/javascript">
+ window.addEventListener("load", function(){
+    var loader = document.getElementById("loader-wrapper");
+    var form = document.querySelector('.registration-form.center-block');
+    loader.style.display = "none"; // Masquer le loader
+    form.style.display = "block"; // Afficher le formulaire
+});
+
+
+$(document).ready(function() {
+
+  // Fonction pour mettre à jour la visibilité des billets en fonction du jour de présence sélectionné
+  const updateTicketVisibility = function() {
+    // Récupère la valeur sélectionnée pour le jour de présence
+    const selectedDay = $("#guest\\[guest_metadata\\[jour_de_presence\\]\\]\\[\\]").val();
+    const selectedCreneau = $("#guest\\[guest_metadata\\[creneau\\]\\]\\[\\]").val();
+
+    // Sélectionne la table entière pour pouvoir manipuler le thead et les lignes de billets
+    const $table = $("table.table.v-center-cells").first();
+
+    // Récupère toutes les lignes de billets
+    const $rows = $table.find("tbody tr");
+
+    // Réinitialise l'affichage des lignes
+    $rows.hide();
+
+    if (selectedDay && selectedCreneau) {
+      // Affiche le thead lorsque des valeurs sont sélectionnées
+      $table.find("thead").show();
+
+      // Affiche seulement les billets qui correspondent au jour et au créneau sélectionnés
+      $rows.filter(`:contains('${selectedDay}')`).filter(`:contains('${selectedCreneau}')`).show();
+    } else {
+      // Cache le thead si aucune valeur de jour ou créneau n'est sélectionnée
+      $table.find("thead").hide();
+    }
+  };
+
+  // Attache la fonction `updateTicketVisibility` à l'événement de changement du sélecteur de jour
+  $("#guest\\[guest_metadata\\[jour_de_presence\\]\\]\\[\\]").change(function() {
+    console.log("Changement détecté dans le sélecteur de jour.");
+    updateTicketVisibility();
+  });
+
+  // Attache également la fonction `updateTicketVisibility` au sélecteur de créneau en cas de changement
+  $("#guest\\[guest_metadata\\[creneau\\]\\]\\[\\]").change(function() {
+    console.log("Changement détecté dans le sélecteur de créneau.");
+    updateTicketVisibility();
+  });
+
+  // Appelle la fonction au chargement de la page pour mettre à jour l'état initial
+  updateTicketVisibility();
+});
+
+</script>
+
+<style>
+  .col-sm-12 .center-block {
+  	max-width:90vw!important;
+  }
+  .empty-space {
+  display:none!important;
+  }
+  .registration-form {
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #fff; /* Arrière-plan clair pour le contraste */
+	border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre douce pour un effet 3D */
+  border: 1px solid #e1e1e1; /* Bordure subtile */
+}
+
+h2, h1, h3 {
+  text-align: center!important;
+  color: #e63026;
+  margin-top: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+  
+.control-label {
+font-weight: bold!important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+select,  
+form-control,
+.sol-inner-container,
+.react-select__control,  
+textarea {
+  width: 100%!important;
+  color: #333!important;
+  border-radius: 15px!important; /* Input arrondi */
+  border: 1px solid #ccc!important; /* Bordure subtile */
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1)!important; /* Effet inset pour le glossy */
+  transition: border-color 0.3s!important;
+}
+
+.sol-input-container input {
+  border: none!important;
+  box-shadow: none!important;
+  }  
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #e63026!important; /* Couleur de bordure au focus */
+  outline: none!important;
+}
+
+input[type="submit"] {
+  padding: 1rem 2rem;
+  width: 100%;
+  background: linear-gradient(to right, #e63026, #CD0F04);
+  background-size: 200% 100%; /* Taille du background pour l'animation */
+  background-position: right bottom; /* Position initiale du background */
+  color: white;
+  border: none;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: background-position 1s; /* Animation sur la position du background */
+}
+
+  
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+select:hover,
+.sol-inner-container:hover,
+.react-select__control:hover,
+textarea:hover {
+  filter: brightness(1.05) contrast(1.1); /* Légère augmentation de la luminosité et du contraste */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2); /* Ombre externe pour plus de profondeur */
+  transition: transform 1s;
+}
+
+#react-select-2-input {
+	color: #333!important; 
+	border-style:none!important;
+	box-shadow: none!important;
+  border-radius:0px!important;
+	transition:none!important;
+}
+
+
+/* Effet de survol pour les boutons */
+input[type="submit"]:hover,
+button:hover {
+  background-position: left bottom; /* Changement de la position du dégradé pour un effet dynamique */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Ombre plus prononcée pour l'effet "soulèvement" */
+  transform: translateY(-2px); /* Léger déplacement vers le haut pour donner une sensation de "clic" */
+  transition: transform 0.3s;
+
+}
+
+.registration-form.center-block {
+    display: none; /* Le formulaire est masqué par défaut */
+  	margin: 0 auto;
+}
+
+#loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+#loader {
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 20%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #e63026;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+</style>
