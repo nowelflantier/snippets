@@ -3,65 +3,61 @@
 </div>
 
 <script type="text/javascript">
- window.addEventListener("load", function(){
+  window.addEventListener("load", function() {
     var loader = document.getElementById("loader-wrapper");
     var form = document.querySelector('.registration-form.center-block');
     loader.style.display = "none"; // Masquer le loader
     form.style.display = "block"; // Afficher le formulaire
-});
+  });
 
+  $(document).ready(function() {
+  
+    // Fonction pour mettre à jour la visibilité des billets en fonction du jour de présence sélectionné et du code promo
+    const updateTicketVisibility = function() {
+      const selectedDay = $("#guest\\[guest_metadata\\[jour_de_presence\\]\\]\\[\\]").val();
+      const selectedCreneau = $("#guest\\[guest_metadata\\[creneau\\]\\]\\[\\]").val();
+      const promocode = $("#guest\\[guest_metadata\\[commanditaire_code_promo\\]\\]").val();
+ // Log dans la console pour suivre la valeur du code promo
+    console.log("Valeur actuelle du code promo : ", promocode);
 
-$(document).ready(function() {
+      const $table = $("table.table.v-center-cells").first();
+      const $rows = $table.find("tbody tr");
 
-  // Fonction pour mettre à jour la visibilité des billets en fonction du jour de présence sélectionné
-  const updateTicketVisibility = function() {
-    // Récupère la valeur sélectionnée pour le jour de présence
-    const selectedDay = $("#guest\\[guest_metadata\\[jour_de_presence\\]\\]\\[\\]").val();
-    const selectedCreneau = $("#guest\\[guest_metadata\\[creneau\\]\\]\\[\\]").val();
-
-    // Sélectionne la table entière pour pouvoir manipuler le thead et les lignes de billets
-    const $table = $("table.table.v-center-cells").first();
-
-    // Récupère toutes les lignes de billets
-    const $rows = $table.find("tbody tr");
-
-    // Réinitialise l'affichage des lignes
-    $rows.hide();
-
-    if (selectedDay && selectedCreneau) {
-      // Affiche le thead lorsque des valeurs sont sélectionnées
-      $table.find("thead").show();
-
-      // Affiche seulement les billets qui correspondent au jour et au créneau sélectionnés
-      $rows.filter(`:contains('${selectedDay}')`).filter(`:contains('${selectedCreneau}')`).show();
-    } else {
-      // Cache le thead si aucune valeur de jour ou créneau n'est sélectionnée
+      // Cacher toutes les lignes par défaut
+      $rows.hide();
       $table.find("thead").hide();
-    }
-  };
 
-  // Attache la fonction `updateTicketVisibility` à l'événement de changement du sélecteur de jour
-  $("#guest\\[guest_metadata\\[jour_de_presence\\]\\]\\[\\]").change(function() {
-    console.log("Changement détecté dans le sélecteur de jour.");
+      // Logique pour l'affichage des lignes en fonction du jour et du créneau
+      if (selectedDay && selectedCreneau) {
+        $table.find("thead").show();
+        $rows.filter(`:contains('${selectedDay}')`).filter(`:contains('${selectedCreneau}')`).show();
+      }
+
+      // Logique pour l'affichage de la catégorie "Exhibitor's invitation"
+      if (promocode.length) {
+        $rows.filter(":contains('Exhibitor invitation')").show();
+      }
+    };
+
+    // Attacher les gestionnaires d'événements
+    $("#guest\\[guest_metadata\\[jour_de_presence\\]\\]\\[\\]").change(updateTicketVisibility);
+    $("#guest\\[guest_metadata\\[creneau\\]\\]\\[\\]").change(updateTicketVisibility);
+    $("#guest\\[guest_metadata\\[commanditaire_code_promo\\]\\]").on("input", updateTicketVisibility);
+
+    // Appel initial pour configurer la visibilité au chargement de la page
     updateTicketVisibility();
   });
-
-  // Attache également la fonction `updateTicketVisibility` au sélecteur de créneau en cas de changement
-  $("#guest\\[guest_metadata\\[creneau\\]\\]\\[\\]").change(function() {
-    console.log("Changement détecté dans le sélecteur de créneau.");
-    updateTicketVisibility();
-  });
-
-  // Appelle la fonction au chargement de la page pour mettre à jour l'état initial
-  updateTicketVisibility();
-});
-
 </script>
+
 
 <style>
   .col-sm-12 .center-block {
   	max-width:90vw!important;
   }
+  .row{
+  	margin-right: -26px;
+    margin-left: -26px;
+   }
   .empty-space {
   display:none!important;
   }
